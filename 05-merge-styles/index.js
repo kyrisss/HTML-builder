@@ -23,6 +23,4 @@ const path = require('path');
     catch (err) {
         console.error(err)
     }
-
-
 })()

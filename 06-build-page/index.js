@@ -3,8 +3,6 @@ const fs = require('fs');
 const path = require('path');
 
 
-
-
 (async () => {
     const templatePath = path.join(__dirname, 'template.html')
     const projectDirPath = path.join(__dirname, 'project-dist')
@@ -45,7 +43,6 @@ const path = require('path');
 
     // Собираем стили
 
-    // const output = fs.createWriteStream(path.join(projectDirPath, 'style.css'), 'utf-8')
     const styleFiles = await fsPromises.readdir(stylesDirPath)
 
     styleFiles.forEach(async file => {
@@ -75,17 +72,16 @@ const path = require('path');
         const assetsFiles = await fsPromises.readdir(sourcePath, { withFileTypes: true })
         assetsFiles.forEach(async file => {
 
-            if(file.isFile()){
+            if (file.isFile()) {
                 await fsPromises.copyFile(path.join(sourcePath, file.name), path.join(newPath, file.name))
             }
-            else{
-                
+            else {
+
                 copyDir(path.join(sourcePath, file.name), path.join(newPath, file.name))
             }
         })
     }
 
-    
     copyDir(assetsPath, newDirPath)
-    
+
 })()
