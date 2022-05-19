@@ -9,7 +9,7 @@ const output = fs.createWriteStream(path.join(__dirname, 'destination.txt'));
 const q = readline.createInterface({ input, output })
 
 
-q.write('Введите какой-нибудь текст\n')
+stdout.write('Введите какой-нибудь текст\n')
 q.on('line', (answer) => {
     if(answer == 'exit'){
         exit()
